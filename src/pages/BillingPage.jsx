@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Stack from "../components/layout/Stack";
 import Box from "../components/layout/Box";
 import Card from "../components/ui/Card";
@@ -7,9 +8,10 @@ import Button from "../components/ui/Button";
 import csvParser from "../hooks/csvParser";
 
 function BillingPage() {
-    const { file, headers, rows, loading, success, selectFile, uploadCsv } = csvParser()
+    const { file, headers, rows, loading, success, selectFile, uploadCsv } = csvParser();
+    const navigate = useNavigate();
     return (
-        <Box padding="lg" background="white" rounded="lg">
+        <Box>
             <Stack gap="xl">
                 {/* Header */}
                 <Stack gap="lg">
@@ -21,6 +23,7 @@ function BillingPage() {
                         Upload a csv file to import billing or invoice data.
                     </Text>
                 </Stack>
+
 
                 {/*upload */}
                 <Card>
@@ -64,6 +67,19 @@ function BillingPage() {
                         </Card>
                     </Box>
                 )}
+
+                {/* Navigate button */}
+                <Box>
+                    <Stack direction="horizontal" justify="end">
+                        <Button
+                            variant="secondary"
+                            onClick={() => navigate("/showcomponent")}
+                        >
+                            Show Component
+                        </Button>
+                    </Stack>
+                </Box>
+
             </Stack>
         </Box >
     );

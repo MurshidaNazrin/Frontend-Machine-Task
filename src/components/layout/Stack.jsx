@@ -19,20 +19,27 @@ const stackVariants = cva(
                 start: "items-start",
                 center: "items-center",
                 end: "items-end"
+            },
+            justify: {
+                start: "justify-start",
+                center: "justify-center",
+                end: "justify-end",
+                between: "justify-between"
             }
         },
         defaultVariants: {
             direction: "vertical",
             gap: "md",
-            align: "start"
+            align: "start",
+            justify: "start"
         }
     }
 )
 
-function Stack({ direction, gap, align, className, children }) {
+function Stack({ direction, gap, align, justify, className, children }) {
     return (
         <div
-            className={cn(stackVariants({ direction, gap, align }),
+            className={cn(stackVariants({ direction, gap, align, justify }),
                 className
             )}
         >
